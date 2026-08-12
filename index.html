@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APS Land Services — About Us</title>
+  <style>
+    /* Base resets & typography */
+    :root {
+      --bg-light: #f8f9fa;
+      --bg-navy: #0e1726;
+      --bg-dark: #12181e;
+      --text-dark: #111827;
+      --text-light: #f3f4f6;
+      --accent: #c25e00;
+      --accent-hover: #9a4a00;
+      --border: #e5e7eb;
+      --border-dark: #2a3441;
+      --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-main); color: var(--text-dark); background: #ffffff; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    
+    /* Layout utilities */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-padding { padding: 90px 0; }
+    .btn { display: inline-block; padding: 12px 28px; font-weight: 600; border-radius: 4px; background: var(--accent); color: #fff; transition: background 0.2s; }
+    .btn:hover { background: var(--accent-hover); }
+    .btn-outline-light { border: 1px solid var(--border-dark); color: var(--text-light); padding: 12px 28px; font-weight: 600; border-radius: 4px; display: inline-block; transition: all 0.2s; }
+    .btn-outline-light:hover { background: #ffffff; color: var(--bg-navy); }
+
+    /* Nav */
+    nav { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 0.5px; }
+    .logo span { font-size: 0.75rem; color: #6b7280; font-weight: 400; margin-left: 8px; }
+    nav ul { display: flex; gap: 32px; list-style: none; font-weight: 500; font-size: 0.95rem; }
+
+    /* Header / Hero */
+    .page-header { padding: 80px 0 60px; background: var(--bg-light); border-bottom: 1px solid var(--border); }
+    .header-tag { font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; display: block; }
+    .page-header h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .page-header p { font-size: 1.2rem; color: #4b5563; max-width: 700px; }
+
+    /* History (3 Paragraphs) */
+    .history-section { padding: 90px 0; }
+    .history-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; }
+    .history-title h2 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; }
+    .history-body p { font-size: 1.1rem; color: #374151; margin-bottom: 24px; line-height: 1.7; }
+    .history-body p:last-child { margin-bottom: 0; }
+
+    /* Meet the Team */
+    .team-section { background: var(--bg-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .team-header { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+    .team-header h2 { font-size: 2.25rem; font-weight: 700; margin-bottom: 12px; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .team-card { background: #ffffff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .team-photo-placeholder { width: 100%; height: 260px; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-weight: 600; font-size: 0.9rem; }
+    .team-info { padding: 28px 24px; }
+    .team-info h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .team-role { font-size: 0.85rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; display: block; }
+    .team-info p { font-size: 0.95rem; color: #4b5563; line-height: 1.5; }
+
+    /* Landowner Reassurance Takeover (Navy Background) */
+    .landowner-takeover { background: var(--bg-navy); color: var(--text-light); padding: 100px 0; }
+    .landowner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .landowner-content h2 { font-size: 2.5rem; line-height: 1.2; font-weight: 700; margin-bottom: 20px; }
+    .landowner-content p { font-size: 1.1rem; color: #9ca3af; margin-bottom: 24px; line-height: 1.6; }
+    .trust-bullets { list-style: none; margin-bottom: 32px; }
+    .trust-bullets li { position: relative; padding-left: 28px; margin-bottom: 12px; color: #d1d5db; font-size: 1rem; }
+    .trust-bullets li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+    .cta-group { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    /* Footer */
+    footer { background: var(--bg-dark); color: var(--text-light); padding: 80px 0 40px; border-top: 1px solid var(--border-dark); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 64px; margin-bottom: 60px; }
+    .footer-brand p { color: #9ca3af; margin-top: 12px; font-size: 0.95rem; }
+    .footer-col h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #d1d5db; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { color: #9ca3af; font-size: 0.95rem; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid var(--border-dark); padding-top: 32px; display: flex; justify-content: space-between; font-size: 0.85rem; color: #6b7280; }
+
+    @media (max-width: 768px) {
+      .history-grid, .team-grid, .landowner-grid, .footer-grid { grid-template-columns: 1fr; }
+      .page-header h1 { font-size: 2.25rem; }
+      .landowner-content h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container">
+      <div class="logo">APS LAND SERVICES <span>EST. 1980</span></div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Landowners</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HEADER / HERO -->
+  <header class="page-header">
+    <div class="container">
+      <span class="header-tag">About Our Company</span>
+      <h1>Built on integrity, relationships, and execution.</h1>
+      <p>For over four decades, APS Land Services has provided trusted land acquisition, permitting, and field coordination for American energy and infrastructure projects.</p>
+    </div>
+  </header>
+
+  <!-- HISTORY (3 PARAGRAPHS) -->
+  <section class="history-section">
+    <div class="container">
+      <div class="history-grid">
+        <div class="history-title">
+          <span class="header-tag">Our Legacy</span>
+          <h2>Four decades in the making.</h2>
+        </div>
+        <div class="history-body">
+          <p>Founded in 1980 as Allstate Permit Services, our company was built on a straightforward premise: energy and infrastructure projects succeed only when land rights and permits are handled with total accuracy and absolute transparency. What began as a regional permitting operation quickly grew as clients recognized the value of a team that kept its word, met its deadlines, and treated property owners with respect.</p>
+          
+          <p>Over the years, as energy development expanded and regulatory environments became increasingly complex, we evolved alongside the industry. Rebranding to APS Land Services reflects our comprehensive capabilities—expanding from specialized seismic permitting into complete right-of-way acquisition, advanced GIS mapping, and thorough title curative services across 23 states and more than 100 counties.</p>
+          
+          <p>Today, while our reach and technology have expanded significantly, our core operating philosophy remains unchanged. We still believe in direct manager oversight, turnkey pricing without surprise fees, and personal accountability. Every permit filed and every agreement negotiated carries four decades of reputation behind it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM -->
+  <section class="team-section section-padding">
+    <div class="container">
+      <div class="team-header">
+        <span class="header-tag">Leadership</span>
+        <h2>Meet the Leadership</h2>
+        <p>Experienced field veterans and land experts guiding every project from evaluation to closeout.</p>
+      </div>
+
+      <div class="team-grid">
+        <!-- Executive 1 -->
+        <div class="team-card">
+          <div class="team-photo-placeholder">[ Headshot Placeholder ]</div>
+          <div class="team-info">
+            <h3>Leadership Name</h3>
+            <span class="team-role">Managing Principal / Project Director</span>
+            <p>Over 25 years overseeing complex land acquisition and seismic permitting operations across the Intermountain West and Texas basins.</p>
+          </div>
+        </div>
+
+        <!-- Executive 2 -->
+        <div class="team-card">
+          <div class="team-photo-placeholder">[ Headshot Placeholder ]</div>
+          <div class="team-info">
+            <h3>Leadership Name</h3>
+            <span class="team-role">Director of Title &amp; Permitting</span>
+            <p>Specializes in mineral title curative back to sovereignty and regulatory compliance with state and federal land management agencies.</p>
+          </div>
+        </div>
+
+        <!-- Executive 3 -->
+        <div class="team-card">
+          <div class="team-photo-placeholder">[ Headshot Placeholder ]</div>
+          <div class="team-info">
+            <h3>Leadership Name</h3>
+            <span class="team-role">GIS &amp; Field Operations Lead</span>
+            <p>Leads spatial data mapping, database integrity, and daily field coordination to keep crews and landowner records synchronized.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANDOWNER REASSURANCE (NAVY BACKGROUND TAKEOVER) -->
+  <section class="landowner-takeover">
+    <div class="container">
+      <div class="landowner-grid">
+        <div class="landowner-content">
+          <span class="header-tag" style="color: #f97316;">Landowner Trust &amp; Verification</span>
+          <h2>Have you been contacted by an APS Land agent?</h2>
+          <p>If an agent from APS Land Services has visited your property, sent correspondence, or requested access for an upcoming project, we welcome you to verify their credentials and learn more about your rights.</p>
+          
+          <ul class="trust-bullets">
+            <li>Direct manager contact for quick identity &amp; project verification</li>
+            <li>Transparent explanation of proposed field activity on your land</li>
+            <li>Fair market payment processing and clear contractual terms</li>
+          </ul>
+
+          <div class="cta-group">
+            <a href="#" class="btn">Read Landowner Guide</a>
+            <a href="#" class="btn-outline-light">Contact APS to Verify Agent</a>
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.05); padding: 40px; border-radius: 8px; border: 1px solid var(--border-dark);">
+          <h3 style="font-size: 1.3rem; margin-bottom: 12px; color: #fff;">Our Landowner Guarantee</h3>
+          <p style="font-size: 0.95rem; color: #9ca3af; margin-bottom: 20px;">We treat every landowner as a long-term partner. You will always receive clear documentation, prompt payments, and a direct point of contact who answers the phone.</p>
+          <div style="font-size: 0.85rem; color: #6b7280; border-top: 1px solid var(--border-dark); padding-top: 16px;">
+            Formerly operating as Allstate Permit Services. Established 1980.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo" style="color: #fff;">APS LAND SERVICES</div>
+          <p>Land Services &amp; Permit Acquisition Since 1980.<br>Formerly Allstate Permit Services.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Landowners</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">Cache Valley, UT</a></li>
+            <li><a href="#">info@apsland.com</a></li>
+            <li><a href="#">(XXX) XXX-XXXX</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Allstate Permit Services. All rights reserved.</span>
+        <span>APS Land Services</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
